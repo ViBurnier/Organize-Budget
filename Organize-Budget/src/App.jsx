@@ -1,6 +1,6 @@
 import './App.css'
 import Config from './components/config'
-import AddBudGet from './components/addBudget';
+import AddBudGet from './components/AddBudget';  
 import { useEffect, useState } from 'react';
 import { Trash2 } from "lucide-react";
 import { v4 } from "uuid";
@@ -13,8 +13,20 @@ function App() {
     localStorage.setItem("list", JSON.stringify(list))
   }, [list])
 
+  //data formatada para br
+  function returnDate(){
+      const date = new Date()
+      const currentDay = date.getDate()
+      const month = date.getMonth() + 1
+      const year = date.getFullYear()
+  
+      const dateFomat = `${currentDay}/${month}/${year}`
+  
+      return dateFomat
+    } 
+  
   function onAddBudget(title, date, price, description){
-    const newList = {
+    const newBudget  = {
       id: v4(),
       title,
       date,
@@ -22,8 +34,8 @@ function App() {
       description,
       isCompleted: false,
     }
-
-    setList([newList])
+    console.log(newBudget)
+    setList([...list, newBudget])
   }
 
   return (
@@ -43,6 +55,7 @@ function App() {
 
     <AddBudGet
       onAddBudget={onAddBudget}
+      returnDate={returnDate}
     />
 
     

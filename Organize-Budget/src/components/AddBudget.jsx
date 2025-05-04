@@ -3,11 +3,14 @@ import { ArrowBigRightDash } from "lucide-react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
-function AddBudGet({onAddBudget}) {
+
+
+function AddBudGet({onAddBudget, returnDate}) {
+
   const schema = yup.object().shape({
     title: yup.string().required("Título é obrigatório"),
 
-    date: yup.date().required("Data obrigatória"),
+    date: yup.date().required("Data obrigatória").min(returnDate(), "Insira uma data válida!").max("9999", "Insira um ano válido!"),
 
     price: yup
       .number()
@@ -28,7 +31,7 @@ function AddBudGet({onAddBudget}) {
   return (
     <div className="w-full bg-gray-500 p-2 ">
       <div className="space-y-5 columns-2">
-        <form onSubmit={handleSubmit((data) => onAddBudget(data))}>
+        <form onSubmit={handleSubmit((data) => onAddBudget(data.title, data.date, data.price, data.description))}>
           <input
             {...register("title")}
             placeholder="TITLE"
