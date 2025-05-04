@@ -1,16 +1,17 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ArrowBigRightDash } from "lucide-react";
 import { useForm } from "react-hook-form";
+import Config from "./config";
 import * as yup from "yup";
 
 
 
-function AddBudGet({onAddBudget, returnDate}) {
+function AddBudGet({onAddBudget}) {
 
   const schema = yup.object().shape({
     title: yup.string().required("Título é obrigatório"),
 
-    date: yup.date().required("Data obrigatória").min(returnDate(), "Insira uma data válida!").max("9999", "Insira um ano válido!"),
+    date: yup.date().required("Data obrigatória").min(Config.dateFormat, "Insira uma data válida!").max("9999", "Insira um ano válido!"),
 
     price: yup
       .number()

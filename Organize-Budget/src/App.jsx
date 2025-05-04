@@ -12,18 +12,6 @@ function App() {
   useEffect(() => {
     localStorage.setItem("list", JSON.stringify(list))
   }, [list])
-
-  //data formatada para br
-  function returnDate(){
-      const date = new Date()
-      const currentDay = date.getDate()
-      const month = date.getMonth() + 1
-      const year = date.getFullYear()
-  
-      const dateFomat = `${currentDay}/${month}/${year}`
-  
-      return dateFomat
-    } 
   
   function onAddBudget(title, date, price, description){
     const newBudget  = {
@@ -55,7 +43,6 @@ function App() {
 
     <AddBudGet
       onAddBudget={onAddBudget}
-      returnDate={returnDate}
     />
 
     
