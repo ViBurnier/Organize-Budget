@@ -1,17 +1,24 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ArrowBigRightDash } from "lucide-react";
 import { useForm } from "react-hook-form";
+import Config from "./config";
 import * as yup from "yup";
 
-function AddBudGet() {
+
+
+function AddBudGet({onAddBudget}) {
+
   const schema = yup.object().shape({
     title: yup.string().required("Título é obrigatório"),
-    date: yup.date().required("Data obrigatória"),
+
+    date: yup.date().required("Data obrigatória").min(Config.dateFormat, "Insira uma data válida!").max("9999", "Insira um ano válido!"),
+
     price: yup
       .number()
       .typeError("Preço deve ser um número")
       .positive("Preço precisa ser positivo")
       .required("Preço obrigatório"),
+
     description: yup.string().max(100, "Máximo 100 caracteres"),
   });
 
@@ -25,30 +32,31 @@ function AddBudGet() {
   return (
     <div className="w-full bg-gray-500 p-2 ">
       <div className="space-y-5 columns-2">
-        <form onSubmit={handleSubmit((data) => console.log(data))}>
+        <form onSubmit={handleSubmit((data) => onAddBudget(data.title, data.date, data.price, data.description))}>
           <input
             {...register("title")}
             placeholder="TITLE"
-            id="title"
+            type="text"
             className="bg-white rounded-sm p-2 w-full"
           />
 
           <input
             {...register("date")}
             placeholder="DATE"
-            id="date"
+            type="date"
             className="bg-white rounded-sm p-2 w-full"
           />
+
           <input
             {...register("price")}
             placeholder="PRICE"
-            id="price"
+            type="number"
             className="bg-white rounded-sm p-2 w-full"
           />
           <input
             {...register("description")}
             placeholder="DESCRIPTION"
-            id="description"
+            type="text"
             className="bg-white rounded-sm p-2 w-full"
           />
 
