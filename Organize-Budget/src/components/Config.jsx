@@ -1,9 +1,9 @@
 //data formatada para 
-function dateFormatBrasil(){
-    const date = new Date()
-    const currentDay = date.getDate()
-    const month = date.getMonth() + 1
-    const year = date.getFullYear()
+function dateFormatBrasil(date){
+    const param = new Date(date)
+    const currentDay = param.getDate()
+    const month = param.getMonth() + 1
+    const year = param.getFullYear()
 
     return `${currentDay}/${month}/${year}`
 } 
@@ -11,7 +11,7 @@ function dateFormatBrasil(){
 const Config ={
     logo: "/src/image/notas.png",
     title: "OB",
-    dateFormat: dateFormatBrasil()
+    dateFormat: dateFormatBrasil
 }
 
 

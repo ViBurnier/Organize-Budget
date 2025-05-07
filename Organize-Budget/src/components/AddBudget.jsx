@@ -11,7 +11,7 @@ function AddBudGet({onAddBudget}) {
   const schema = yup.object().shape({
     title: yup.string().required("Título é obrigatório"),
 
-    date: yup.date().required("Data obrigatória").min(Config.dateFormat, "Insira uma data válida!").max("9999", "Insira um ano válido!"),
+    date: yup.date().required("Data obrigatória").min(new Date().toLocaleDateString('pt-BR'), "Insira uma data válida!").max("9999", "Insira um ano válido!"),
 
     price: yup
       .number()
@@ -19,7 +19,7 @@ function AddBudGet({onAddBudget}) {
       .positive("Preço precisa ser positivo")
       .required("Preço obrigatório"),
 
-    description: yup.string().max(100, "Máximo 100 caracteres"),
+    description: yup.string().min(2,"Minimo 2 caracteres").max(100, "Máximo 100 caracteres"),
   });
 
   const {
@@ -53,12 +53,10 @@ function AddBudGet({onAddBudget}) {
             type="number"
             className="bg-white rounded-sm p-2 w-full"
           />
-          <input
-            {...register("description")}
-            placeholder="DESCRIPTION"
-            type="text"
-            className="bg-white rounded-sm p-2 w-full"
-          />
+
+    
+          <textarea placeholder="DESCRIPTION" className="bg-white rounded-sm p-2 w-full" id="description" {...register('description')} />
+
 
           <button type="submit">
             <ArrowBigRightDash />
