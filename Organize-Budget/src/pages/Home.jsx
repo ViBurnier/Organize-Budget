@@ -31,8 +31,6 @@ function Home() {
       valor.description == newBudget.description
     )
 
-    console.log(fi)
-
 
     if(fi){
       alert("JA EXISTE NA LISTA")
@@ -41,13 +39,6 @@ function Home() {
     
     setList([...list, newBudget]);    
       
-    
-    //TIRAR QUANDO TERMINAR O PROJETO
-    // console.log(newBudget);
-
-    
-
-
   }
 
   return (

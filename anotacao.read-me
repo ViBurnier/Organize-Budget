@@ -1,7 +1,1 @@
 PENDENTE
-- trocar a view do input date para dia/mes/ano
-- Verificar se o o registro atual ja existe na lista
-
-= formato do input date, depende do navegador esta com a linguagem nativa para estar com o formato certo. 
-= exp: se um user brasileiro estiver usando o site com a linguagem do navegador em ingles, o formato vai ser americano (mes/dia/ano).  
-= uma pessoa pode querer fazer o mesmo registro mas em dias diferentes
