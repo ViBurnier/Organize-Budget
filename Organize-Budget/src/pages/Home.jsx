@@ -1,5 +1,5 @@
 import { v4 } from "uuid";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AddBudGet from "../components/AddBudget";
 import Config from "../components/config";
 
@@ -7,11 +7,7 @@ function Home() {
   const [list, setList] = useState(
     JSON.parse(localStorage.getItem("list")) || []
   );
-
-  useEffect(() => {
-    localStorage.setItem("list", JSON.stringify(list));
-  }, [list]);
-
+  
   //preciso ver se os valores(onAddBudget) ja existem no localStorage
 
   function onAddBudget(title, date, price, description) {
@@ -24,21 +20,21 @@ function Home() {
       isCompleted: false,
     };
 
-    const fi = list.some(valor => 
-      valor.title == newBudget.title &&
-      valor.date == newBudget.date &&
-      valor.price == newBudget.price &&
-      valor.description == newBudget.description
-    )
+    const fi = list.some(
+      (valor) =>
+        valor.title == newBudget.title &&
+        valor.date == newBudget.date &&
+        valor.price == newBudget.price &&
+        valor.description == newBudget.description
+    );
 
-
-    if(fi){
-      alert("JA EXISTE NA LISTA")
-      return 
+    if (fi) {
+      alert("JA EXISTE NA LISTA");
+      return;
     }
-    
-    setList([...list, newBudget]);    
-      
+
+    localStorage.setItem("list", JSON.stringify([...list, newBudget]));
+    setList([...list, newBudget]);
   }
 
   return (

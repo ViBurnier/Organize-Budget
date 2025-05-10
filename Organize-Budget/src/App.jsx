@@ -1,42 +1,38 @@
-import './App.css'
-import Config from './components/config'
+import "./App.css";
+import Config from "./components/config";
 import { Link } from "react-router";
-import Home from './pages/Home'
-import List from './pages/List'
+import Home from "./pages/Home";
+import List from "./pages/List";
 
-import { Trash2 } from "lucide-react";
 
-import { Routes, Route } from 'react-router-dom';
+
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-   <div className='space-y-10'>
+    <div className="space-y-10">
+      <nav className="text-xl font-medium text-white h-19 flex items-center justify-between">
+        <div className="flex w-25 justify-around">
+          <Link to="/" className="flex">
+            <img src={Config.logo} alt="" className="h-10 w-10" />
+            <p>{Config.title}</p>
+          </Link>
+        </div>
 
-    <nav className='text-xl font-medium text-white h-19 flex items-center justify-between'>
-      
-      <div className='flex w-25 justify-around'>
-        <Link to="/" className='flex'>
-        <img src={Config.logo} alt="" className='h-10 w-10' />
-        <p>{Config.title}</p>
-        </Link>
-      </div>
+        <div className="flex justify-around w-60">
+          <Link to="/List">List</Link>
+          
+            
+        </div>
+      </nav>
 
-      <div className='flex justify-around w-60'>
-      <a href=""></a>
-        <Link to="/List">List</Link>
+      <Routes>
+        <Route path="/" element={<Home />} />
 
-        <button><Trash2/></button>
-      </div>
-    </nav>
-
-    <Routes>
-      <Route path='/' element={<Home />} />
-
-      <Route path='/List' element={<List />} />
-    </Routes>
-
-   </div>
-  )
+        <Route path="/List" element={<List />} />
+      </Routes>
+    </div>
+  );
 }
 
-export default App
+export default App;
