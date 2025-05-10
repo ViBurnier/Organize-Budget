@@ -9,7 +9,7 @@ function dateFormatBrasil(date){
 } 
 
 const Config ={
-    logo: "/src/image/notas.png",
+    logo: "/src/image/logo.png",
     title: "OB",
     dateFormat: dateFormatBrasil
 }
