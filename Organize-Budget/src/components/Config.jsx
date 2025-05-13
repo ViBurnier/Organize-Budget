@@ -10,7 +10,7 @@ function dateFormatBrasil(date){
 
 const Config ={
     logo: "/src/image/logo.png",
-    title: "OB",
+    title: "Organize-Budget",
     dateFormat: dateFormatBrasil
 }
 

@@ -1,5 +1,5 @@
 import "./App.css";
-import Config from "./components/config";
+import Config from "./components/Config";
 import { Link } from "react-router";
 import Home from "./pages/Home";
 import List from "./pages/List";
@@ -11,11 +11,15 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <div className="space-y-10">
+      
       <nav className="text-xl font-medium text-white h-19 flex items-center justify-between">
+
         <div className="flex w-25 justify-around">
           <Link to="/" className="flex">
-            <img src={Config.logo} alt="" className="h-10 w-10" />
+
+            <img src={Config.logo} alt="" className="h-10 w-10" /> 
             <p>{Config.title}</p>
+
           </Link>
         </div>
 

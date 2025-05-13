@@ -6,9 +6,9 @@ function List() {
   const [list, setList] = useState(JSON.parse(localStorage.getItem("list")) || [])
 
   function onDeletBudget(id){
-    const a = list.filter(z => id != z.id)
-    localStorage.setItem("list", JSON.stringify(a))
-    setList(a)
+    const filterId = list.filter(idList => id != idList.id)
+    localStorage.setItem("list", JSON.stringify(filterId))
+    setList(filterId)
   }
 
   return (
@@ -17,6 +17,7 @@ function List() {
       <div className=" h-full w-[100rem] bg-amber-950 p-5">
         {list.map(list => (
           <div  className=" bg-amber-50 p-5 my-3">
+
             <p>title: {list.title}</p>
             <p>description: {list.description}</p>
             <p>price: {list.price}</p>
