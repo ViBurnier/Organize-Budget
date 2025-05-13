@@ -44,7 +44,6 @@ function AddBudGet({ onAddBudget }) {
               onAddBudget(data.title, data.date, data.price, data.description);
               reset()
             }
-            
           )}
         >
           <input
